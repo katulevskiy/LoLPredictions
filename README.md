@@ -29,3 +29,10 @@ Jeremy Lim, jel125@ucsd.edu
 Kevin Zheng, kezheng@ucsd.edu 
 Daniil Katulevskiy, dkatulevskiy@ucsd.edu 
 Eric Hu, e2hu@ucsd.edu 
+
+### Milestone 2 Conclusion
+Potential model improvements:
+- Make the model predict 2 minutes at a time (ex. markov chain)
+- New metric: progress along lanes
+- Finer state splits
+- Train given less data (ex. agent from team perspective rather than spectator perspective)
