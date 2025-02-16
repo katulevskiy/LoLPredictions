@@ -9,7 +9,7 @@ The AI agent used in this model is a goal-based agent, meaning it operates by as
 ## AI Agent Setup and Probabilistic Modeling
 The Bayesian network is structured to capture key dependencies between game metrics, such as gold difference, experience difference, kills, deaths, and objective control. The structure is learned using a Hill Climbing Search algorithm with a Bayesian Information Criterion (BIC) Score to find the best-fitting network structure.
 
-## Q1.2 Datasets
+## Datasets
 
 Please provide links to your proposed datasets below. You can submit up to 3, but only need 1. The top one will ranked 1st and the bottom ranked last:
 
