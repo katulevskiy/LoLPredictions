@@ -32,7 +32,13 @@ Eric Hu, e2hu@ucsd.edu
 
 ### Milestone 2 Conclusion
 Potential model improvements:
-- Make the model predict 2 minutes at a time (ex. markov chain)
-- New metric: progress along lanes
+- Because the dataset includes information at 2 minute intervals, we could increase the functionality and potentially the accuracy of the model by converting it to a time based markov chain which attempts to predict the stats in the next 2 minutes based on the stats of the current minute.
+  This would require soProportionalize metrics
+  Another New metric: progress along lanes
+- Bayesian network ill suited since loops intrinsically present
+- These loops also create some extremely strong proxy statistics. Gold technically does nothing on its own, but proxies for items, player skill, 
+- Simplify due to strong proxy metrics
+
+- Specificity consider item shop purchases (currently only have wards)
 - Finer state splits
-- Train given less data (ex. agent from team perspective rather than spectator perspective)
+- Alternatively, we could create a slightly different agent which functions based on the information given to a certain team rather than the information available to spectators (ex. certain info such as the enemy team's gold is not present).
