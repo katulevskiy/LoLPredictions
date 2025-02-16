@@ -1,6 +1,13 @@
-## Q1.1 Abstract
+# AI Agent for League of Legends Match Prediction Using Bayesian Network
 
+## Abstract
 This AI agent is designed to predict match outcomes in League of Legends based on in-game statistics. Using a dataset containing high-ranked matches with detailed in-game metrics—such as minion kills, gold earned, experience gained, jungle control, and objective captures—the agent analyzes early-game conditions and predicts whether a team will win or lose. The performance measure of the agent is the accuracy of match predicting outcomes, whereas the environment is the stats of League of Legends Platinum Ranked Games (starting with minute 10 with strides of 2 minutes). Actuators are displaying match prediction output and Sensors are the Riot League of Legends Game API. The agent operates as a goal-based AI, focusing solely on maximizing the accuracy of its match outcome predictions. Given the strong conditional dependencies among in-game variables (e.g., minion kills correlating with gold and experience leads) along with the binary nature of predictions makes probabilistic agents such as Bayesian networks a good fit.
+
+## AI Agent Type
+The AI agent used in this model is a goal-based agent, meaning it operates by assessing game state information and attempting to maximize its ability to predict the winning team. The prediction is probabilistic, leveraging a Bayesian Network structure to infer likely outcomes based on early-game conditions.
+
+## AI Agent Setup and Probabilistic Modeling
+The Bayesian network is structured to capture key dependencies between game metrics, such as gold difference, experience difference, kills, deaths, and objective control. The structure is learned using a Hill Climbing Search algorithm with a Bayesian Information Criterion (BIC) Score to find the best-fitting network structure.
 
 ## Q1.2 Datasets
 
@@ -19,16 +26,45 @@ This dataset contains the first 10min. stats of approx. 10k ranked games (SOLO Q
 This dataset haven 94 attributes capturing comprehensive match and player data. 
 Key columns: game_id, game_start_utc, game_duration, queue_id, participant_id, kills, deaths, assists, final_damageDealt, final_goldEarned, and more.
 
-## Q1.3 Group Members
+## Training the First Model
+The first version of the model was trained using:
+- Bayesian network structure learning via Hill Climb Search.
+- Maximum Likelihood Estimation for probability distributions.
+- A dataset filtered at the 10-minute mark to capture early-game statistics.
+- Feature selection based on correlation with the match outcome.
 
-Please provide the Name and email of your group members. Up to 6.
-Please don't forget to add them to gradescope assignment as well!
+## Model Evaluation
+- Accuracy Assessment: Comparing predictions against actual game results.
+- Visualization: Network graphs showing dependencies between variables.
+- Correlation Analysis: Heatmaps showing feature importance.
 
-Jason Cheung, jac130@ucsd.edu
-Jeremy Lim, jel125@ucsd.edu 
-Kevin Zheng, kezheng@ucsd.edu 
-Daniil Katulevskiy, dkatulevskiy@ucsd.edu 
-Eric Hu, e2hu@ucsd.edu 
+## PEAS Analysis
+- Performance Measure: Accuracy of match prediction.
+- Environment: In-game statistics from League of Legends Platinum Ranked Games.
+- Actuators: Model predictions displayed in outputs.
+- Sensors: Riot League of Legends Game API providing real-time data.
+
+## Conclusion
+
+The first iteration of our Bayesian network model has provided promising insights into early-game win prediction. Key takeaways include:
+
+- ...In progress
+
+Potential Model Improvements
+- Predict 2-minute intervals using a Markov Chain approach
+- Incorporate new metrics, such as lane progression
+- Optimize feature selection for more granularity
+- Train models using smaller data subsets (e.g., individual team perspective rather than full spectator data)
+
+
+
+## Group Members
+- Jason Cheung, jac130@ucsd.edu
+- Jeremy Lim, jel125@ucsd.edu 
+- Kevin Zheng, kezheng@ucsd.edu 
+- Daniil Katulevskiy, dkatulevskiy@ucsd.edu 
+- Eric Hu, e2hu@ucsd.edu 
+
 
 ### Milestone 2 Conclusion
 Potential model improvements:
