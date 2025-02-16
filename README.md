@@ -47,8 +47,26 @@ The first version of the model was trained using:
 ## Conclusion
 
 The first iteration of our Bayesian network model has provided promising insights into early-game win prediction. Key takeaways include:
+### Milestone 2 Conclusion
+Potential model improvements:
+- Because the dataset includes information at 2 minute intervals, we could increase the functionality and potentially the accuracy of the model by converting it to a time based markov chain which attempts to predict the stats in the next 2 minutes based on the stats of the current minute.
+  Another New metric: progress along lanes
+Bayesian networks notably ill-suited for this problem since loops are intrinsically present with gold (technically items purchased with gold) and level. Since they have direct impact on win percentage 
 
-- ...In progress
+
+While gold is *theoretically* conditionally independent from win chance given item counts (the only way gold actually effects the outcome of the match).
+This is especially troublesome for Level, since 
+
+These loops also create some extremely strong proxy statistics. For example, due to low respawn times in the early game, champion kills should be more or less conditionally independent to winning outside given their effect on gold and exp. However, due to being affected by player/team skill, they are still relevant conditions by proxy.
+
+Gold and experience acting as weighted aggregates also means that more complicated models don't necessarily. This also means certain combos such as lower gold and higher EXP have very low amounts of data. 
+-  Gold technically does nothing on its own but proxies for items, player/team skill.  
+- Simplify due to strong proxy metrics
+
+- Specificity consider item shop purchases (currently only have wards)
+- Finer state splits
+  This would require changing how we  Proportionalize metrics
+- Alternatively, we could create a slightly different agent which functions based on the information given to a certain team rather than the information available to spectators (ex. certain info such as the enemy team's gold is not present).
 
 Potential Model Improvements
 - Predict 2-minute intervals using a Markov Chain approach
@@ -64,17 +82,3 @@ Potential Model Improvements
 - Kevin Zheng, kezheng@ucsd.edu 
 - Daniil Katulevskiy, dkatulevskiy@ucsd.edu 
 - Eric Hu, e2hu@ucsd.edu 
-
-
-### Milestone 2 Conclusion
-Potential model improvements:
-- Because the dataset includes information at 2 minute intervals, we could increase the functionality and potentially the accuracy of the model by converting it to a time based markov chain which attempts to predict the stats in the next 2 minutes based on the stats of the current minute.
-  This would require soProportionalize metrics
-  Another New metric: progress along lanes
-- Bayesian network ill suited since loops intrinsically present
-- These loops also create some extremely strong proxy statistics. Gold technically does nothing on its own, but proxies for items, player skill, 
-- Simplify due to strong proxy metrics
-
-- Specificity consider item shop purchases (currently only have wards)
-- Finer state splits
-- Alternatively, we could create a slightly different agent which functions based on the information given to a certain team rather than the information available to spectators (ex. certain info such as the enemy team's gold is not present).
