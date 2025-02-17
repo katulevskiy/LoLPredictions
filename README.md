@@ -29,7 +29,7 @@ These are the potential datasets for training and evaluating our AI model. The t
     - Key columns include `game_id`, `game_start_utc`, `game_duration`, `queue_id`, `participant_id`, `kills`, `deaths`, `assists`, `final_damageDealt`, `final_goldEarned`, etc.
 
 ## Training the First Model
-The first version of the model was trained using:
+The first version of the model was trained using the following:
 - Bayesian network structure learning via Hill Climb Search.
 - Maximum Likelihood Estimation for probability distributions.
 - A dataset filtered at the 10-minute mark to capture early-game statistics.
@@ -48,9 +48,7 @@ The first version of the model was trained using:
 
 ## Conclusion
 
-The first iteration of our Bayesian network model has provided promising insights into early-game win prediction. Key takeaways include:
-### Milestone 2 Conclusion
-Potential model improvements:
+The first iteration of our Bayesian network model has provided promising insights into early-game win prediction. Here are our observations:
 - Because the dataset includes information at 2 minute intervals, we could increase the functionality and potentially the accuracy of the model by converting it to a time based markov chain which attempts to predict the stats in the next 2 minutes based on the stats of the current minute.
   Another New metric: progress along lanes
 Bayesian networks notably ill-suited for this problem since loops are intrinsically present with gold (technically items purchased with gold) and level. Since they have direct impact on win percentage 
