@@ -48,31 +48,37 @@ The first version of the model was trained using:
 
 The first iteration of our Bayesian network model has provided promising insights into early-game win prediction. Key takeaways include:
 ### Milestone 2 Conclusion
+Model evaluation
+- Our initial model is fairly successful, reaching around 70% accuracy.
+- Precision and recall are similar, as expected as a 50/50 dataset
+- However, it seems difficult to improve through complexity
+ - Conditioning off goldDiff or expDiff alone already hits around 70% accuracy (17846 / 24912 for gold, 17581 / 24912 for exp)
+
 Potential model improvements:
-- Because the dataset includes information at 2 minute intervals, we could increase the functionality and potentially the accuracy of the model by converting it to a time based markov chain which attempts to predict the stats in the next 2 minutes based on the stats of the current minute.
-  Another New metric: progress along lanes
-Bayesian networks notably ill-suited for this problem since loops are intrinsically present with gold (technically items purchased with gold) and level. Since they have direct impact on win percentage 
-
-
-While gold is *theoretically* conditionally independent from win chance given item counts (the only way gold actually effects the outcome of the match).
-This is especially troublesome for Level, since 
-
-These loops also create some extremely strong proxy statistics. For example, due to low respawn times in the early game, champion kills should be more or less conditionally independent to winning outside given their effect on gold and exp. However, due to being affected by player/team skill, they are still relevant conditions by proxy.
-
-Gold and experience acting as weighted aggregates also means that more complicated models don't necessarily. This also means certain combos such as lower gold and higher EXP have very low amounts of data. 
--  Gold technically does nothing on its own but proxies for items, player/team skill.  
-- Simplify due to strong proxy metrics
-
-- Specificity consider item shop purchases (currently only have wards)
 - Finer state splits
-  This would require changing how we  Proportionalize metrics
-- Alternatively, we could create a slightly different agent which functions based on the information given to a certain team rather than the information available to spectators (ex. certain info such as the enemy team's gold is not present).
+- More data (small effect on accuracy but large effect on usefulness)
+  - goldDiff > 0 and expDiff < 0 occurred in 2083 / 24912 cases
+  - goldDiff < 0 and expDiff > 0 occurred in 1808 / 24912 cases
+- Add KDR weighting.
+  - Due to low respawn times in the early game, champion kills should be more or less conditionally independent to winning outside given their effect on gold and exp. However, due to being affected by player/team skill, they are still relevant conditions by proxy. This is shown in the strong correlations of the kills and deaths in the first 10 minutes to winning.
+- Add Drake weighting
+  - Mostly due to above reason above, but killing drakes also gives a slight xp boost.
 
-Potential Model Improvements
-- Predict 2-minute intervals using a Markov Chain approach
-- Incorporate new metrics, such as lane progression
-- Optimize feature selection for more granularity
-- Train models using smaller data subsets (e.g., individual team perspective rather than full spectator data)
+Markov Chain:
+- Because the dataset includes information at 2 minute intervals, we could increase the functionality of the model by converting it to a time based markov chain which attempts to predict how many objective buildings (turrets, inhibitors, nexus) get destroyed in the next 2 minutes based on the change of stats between frames. However, due to the amount of feedback loops, it likely won't be more accurate.
+- Challenges:
+ - Time based weighting (stats like respawn time change and using absolute values for gold work less well)
+ - Coarse information (only a snapshot every 2 minutes)
+ - Independence between lanes
+ - Generally high complexity
+![Unreadable chart](potentialmarkov.png)
+A more realistic objective could be predicting the chance of a win / loss in the next 6 minutes
+Hiding information
+- Notably, one of the advantages of Bayesian networks, the ability to generate a CPT, is unused in our current agent as it taken from a spectators perspective.
+- We could create a slightly different agent which functions based on the information given to a certain team rather than the information available to spectators (ex. certain info such as the enemy team's gold is not present).
+
+Bayes Limitations
+- However, building a completely accurate CPT is impossible, as loops are intrinsically present with gold (technically items purchased with gold) and level. Since they have direct impact on win percentage, they can't be removed through conditional independence and they are far to important to ignore.
 
 
 
