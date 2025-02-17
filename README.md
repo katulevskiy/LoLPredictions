@@ -1,13 +1,6 @@
 ## Q1.1 Abstract
 
-This AI agent is designed to predict match outcomes in *League of Legends* based on in-game statistics. Using a dataset containing high-ranked matches with detailed in-game metrics—such as KDA, gold earned, experience gained, jungle control, and objective captures—the agent analyzes early-game conditions and predicts whether a team will win or lose. 
-
-The performance measure of the agent is the accuracy of match predicting outcomes, whereas the environment is the statistics of League of Legends Platinum Ranked Games starting with a game time of 10 minutes and taking steps of 2 minutes (i.e. 10 minutes, 12 minutes, 14 minutes, etc.) 
-
-- **Actuators**: Display of match outcome prediction output
-- **Sensors**: Riot Games' *League of Legends* Game API.
-
-The agent operates as a **goal-based AI**, focusing solely on maximizing the accuracy of its match outcome predictions. The strong conditional dependencies among in-game variables (e.g., kills, deaths, and assists correlating with gold and experience leads) along with the binary nature of predictions (win, loss) makes probabilistic agents such as Bayesian networks a good fit.
+This AI agent is designed to predict match outcomes in *League of Legends* based on in-game statistics. Using a dataset containing high-ranked matches with detailed in-game metrics—such as KDA, gold earned, experience gained, jungle control, and objective captures—the agent analyzes early-game conditions and predicts whether a team will win or lose. The performance measure of the agent is the accuracy of match predicting outcomes, whereas the environment is the statistics of League of Legends Platinum Ranked Games starting with a game time of 10 minutes and taking steps of 2 minutes (i.e. 10 minutes, 12 minutes, 14 minutes, etc.) The actuators for this AI agent are the display of match outcome prediction outputs. The sensor is Riot Games *League of Legends* Game API where the data is pulled from. The agent operates as a goal-based AI, focusing solely on maximizing the accuracy of its match outcome predictions. The strong conditional dependencies among in-game variables (e.g., kills, deaths, and assists correlating with gold and experience leads) along with the binary nature of predictions (win, loss) makes probabilistic agents such as Bayesian networks a good fit.
 
 ## Q1.2 Datasets
 
