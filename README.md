@@ -36,7 +36,8 @@ The first version of the model was trained using:
 - Conditional probabilities were estimated using training set
 The model was determined using:
 - Bayesian network structure learning via Hill Climb Search.
-- Correlation analysis with heatmaps showing feature dependence.
+- Data count and distribution analysis filtering features with too little data.
+- Correlation analysis with heatmaps and pairplots showing feature dependence.
 - Domain knowledge from wikis and personal experience
 
 ## Model Evaluation
@@ -78,6 +79,7 @@ Markov Chain:
  - Intrinsic loops with gold and experience
  - Generally high complexity
 ![Unreadable chart](potentialmarkov.png)
+
 A more realistic objective could be predicting the chance of a win / loss in the next 6 minutes
 
 Hiding information
