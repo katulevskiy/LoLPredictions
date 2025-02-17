@@ -1,3 +1,6 @@
+#### [Link to main file](main.ipynb)
+#### [Link to equation derivation](Papers/lolaiagentpredict.pdf)
+
 # AI Agent for League of Legends Match Prediction Using Bayesian Network
 
 ## Abstract
@@ -28,15 +31,16 @@ Key columns: game_id, game_start_utc, game_duration, queue_id, participant_id, k
 
 ## Training the First Model
 The first version of the model was trained using:
-- Bayesian network structure learning via Hill Climb Search.
-- Maximum Likelihood Estimation for probability distributions.
 - A dataset filtered at the 10-minute mark to capture early-game statistics.
-- Feature selection based on correlation with the match outcome.
+    - Split 75-25 into training and test.
+- Conditional probabilities were estimated using training set
+The model was determined using:
+- Bayesian network structure learning via Hill Climb Search.
+- Correlation analysis with heatmaps showing feature dependence.
+- Domain knowledge from wikis and personal experience
 
 ## Model Evaluation
-- Accuracy Assessment: Comparing predictions against actual game results.
-- Visualization: Network graphs showing dependencies between variables.
-- Correlation Analysis: Heatmaps showing feature importance.
+- Accuracy Assessment: Comparing predictions against actual game results within the test set.
 
 ## PEAS Analysis
 - Performance Measure: Accuracy of match prediction.
@@ -49,37 +53,36 @@ The first version of the model was trained using:
 The first iteration of our Bayesian network model has provided promising insights into early-game win prediction. Key takeaways include:
 ### Milestone 2 Conclusion
 Model evaluation
-- Our initial model is fairly successful, reaching around 70% accuracy.
-- Precision and recall are similar, as expected as a 50/50 dataset
-- However, it seems difficult to improve through complexity
+- Our initial model is fairly successful, reaching around 71% accuracy.
+- Precision and recall are similar, as expected of a 50/50 dataset
+- However, it seems difficult to improve merely through considering more inputs.
  - Conditioning off goldDiff or expDiff alone already hits around 70% accuracy (17846 / 24912 for gold, 17581 / 24912 for exp)
 
 Potential model improvements:
-- Finer state splits
-- More data (small effect on accuracy but large effect on usefulness)
+- Finer state splits (ex. more than boolean states)
+- More data for rarer state combinations (small effect on accuracy but large effect on usefulness)
   - goldDiff > 0 and expDiff < 0 occurred in 2083 / 24912 cases
   - goldDiff < 0 and expDiff > 0 occurred in 1808 / 24912 cases
+  - Significant obstacle to adding more state splits
 - Add KDR weighting.
   - Due to low respawn times in the early game, champion kills should be more or less conditionally independent to winning outside given their effect on gold and exp. However, due to being affected by player/team skill, they are still relevant conditions by proxy. This is shown in the strong correlations of the kills and deaths in the first 10 minutes to winning.
 - Add Drake weighting
-  - Mostly due to above reason above, but killing drakes also gives slight boosts.
+  - Mostly due to above reason above, but killing drakes gives slight boosts and prevents the other team from killing a drake for its 5 minute respawn timer.
 
 Markov Chain:
 - Because the dataset includes information at 2 minute intervals, we could increase the functionality of the model by converting it to a time based markov chain which attempts to predict how many objective buildings (turrets, inhibitors, nexus) get destroyed in the next 2 minutes based on the change of stats between frames. However, due to the amount of feedback loops, it likely won't be more accurate.
 - Challenges:
  - Time based weighting (stats like respawn time change and using absolute values for gold work less well)
  - Coarse information (only a snapshot every 2 minutes)
- - Independence between lanes
+ - Independence between lanes 
+ - Intrinsic loops with gold and experience
  - Generally high complexity
 ![Unreadable chart](potentialmarkov.png)
 A more realistic objective could be predicting the chance of a win / loss in the next 6 minutes
 
 Hiding information
-- Notably, one of the advantages of Bayesian networks, the ability to generate a CPT, is unused in our current agent as 
+- Notably, one of the advantages of Bayesian networks, the ability to generate a CPT, is unused in our current agent as the only piece of information we have available in training but not in testing is the end result of a match.
 - We could create a slightly different agent which functions based on the information given to a certain team rather than the information available to spectators (ex. certain info such as the enemy team's gold is not present).
-
-Bayes Limitations
-- However, building a completely accurate CPT is impossible, as loops are intrinsically present with gold (technically items purchased with gold) and level. Since they have direct impact on win percentage, they can't be removed through conditional independence and they are far to important to ignore.
 
 
 
@@ -88,4 +91,4 @@ Bayes Limitations
 - Jeremy Lim, jel125@ucsd.edu 
 - Kevin Zheng, kezheng@ucsd.edu 
 - Daniil Katulevskiy, dkatulevskiy@ucsd.edu 
-- Eric Hu, e2hu@ucsd.edu 
+- Petra Hu, e2hu@ucsd.edu 
