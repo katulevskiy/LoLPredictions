@@ -13,7 +13,7 @@ The agent operates as a **goal-based AI**, focusing solely on maximizing the acc
 
 These are the potential datasets for training and evaluating our AI model. The top-ranked (1st) dataset is preferred, while the others are alternative options:
 
-1. 1. **[League of Legends Solo Queue Ranked Games](https://www.kaggle.com/datasets/bobbyscience/league-of-legends-soloq-ranked-games)**  
+1. **[League of Legends Solo Queue Ranked Games](https://www.kaggle.com/datasets/bobbyscience/league-of-legends-soloq-ranked-games)**  
     - Contains statistics from approximately 25000 ranked Solo Queue games at Platinum ELO.  
     - Each game includes multiple time frames (from 10 min, 12 min, 14 min, etc.), totaling 240,000+ game frames.  
     - Features 55 attributes for the BLUE team, including kills, deaths, gold, experience, level, and more.  
