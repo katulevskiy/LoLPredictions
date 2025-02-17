@@ -1,30 +1,32 @@
-# AI Agent for League of Legends Match Prediction Using Bayesian Network
+## Q1.1 Abstract
 
-## Abstract
-This AI agent is designed to predict match outcomes in League of Legends based on in-game statistics. Using a dataset containing high-ranked matches with detailed in-game metrics—such as minion kills, gold earned, experience gained, jungle control, and objective captures—the agent analyzes early-game conditions and predicts whether a team will win or lose. The performance measure of the agent is the accuracy of match predicting outcomes, whereas the environment is the stats of League of Legends Platinum Ranked Games (starting with minute 10 with strides of 2 minutes). Actuators are displaying match prediction output and Sensors are the Riot League of Legends Game API. The agent operates as a goal-based AI, focusing solely on maximizing the accuracy of its match outcome predictions. Given the strong conditional dependencies among in-game variables (e.g., minion kills correlating with gold and experience leads) along with the binary nature of predictions makes probabilistic agents such as Bayesian networks a good fit.
+This AI agent is designed to predict match outcomes in *League of Legends* based on in-game statistics. Using a dataset containing high-ranked matches with detailed in-game metrics—such as KDA, gold earned, experience gained, jungle control, and objective captures—the agent analyzes early-game conditions and predicts whether a team will win or lose. 
 
-## AI Agent Type
-The AI agent used in this model is a goal-based agent, meaning it operates by assessing game state information and attempting to maximize its ability to predict the winning team. The prediction is probabilistic, leveraging a Bayesian Network structure to infer likely outcomes based on early-game conditions.
+The performance measure of the agent is the accuracy of match predicting outcomes, whereas the environment is the statistics of League of Legends Platinum Ranked Games starting with a game time of 10 minutes and taking steps of 2 minutes (i.e. 10 minutes, 12 minutes, 14 minutes, etc.) 
 
-## AI Agent Setup and Probabilistic Modeling
-The Bayesian network is structured to capture key dependencies between game metrics, such as gold difference, experience difference, kills, deaths, and objective control. The structure is learned using a Hill Climbing Search algorithm with a Bayesian Information Criterion (BIC) Score to find the best-fitting network structure.
+- **Actuators**: Display of match outcome prediction output
+- **Sensors**: Riot Games' *League of Legends* Game API.
 
-## Datasets
+The agent operates as a **goal-based AI**, focusing solely on maximizing the accuracy of its match outcome predictions. The strong conditional dependencies among in-game variables (e.g., kills, deaths, and assists correlating with gold and experience leads) along with the binary nature of predictions (win, loss) makes probabilistic agents such as Bayesian networks a good fit.
 
-Please provide links to your proposed datasets below. You can submit up to 3, but only need 1. The top one will ranked 1st and the bottom ranked last:
+## Q1.2 Datasets
 
-1. https://www.kaggle.com/datasets/bobbyscience/league-of-legends-soloq-ranked-games
+These are the potential datasets for training and evaluating our AI model. The top-ranked (1st) dataset is preferred, while the others are alternative options:
 
-This dataset contains stats of approx. 25000 ranked games (SOLO QUEUE) from a Platinium ELO. Each game is unique. The gameId can help you to fetch more attributes from the Riot API. Each game has features from different time frames from 10min to the end of the game. For example, game1 10min, game1 12min, game1 14min etc. In total there are +240000 game frames. There are 55 features collected for the BLUE team. This includes kills, deaths, gold, experience, level… It's up to you to do some feature engineering to get more insights. The column hasWon is the target value if you're doing classification to predict the game outcome. Otherwise you can use the gameDuration attribute if you wanna predict the game duration. Attributes starting with is* are boolean categorial values (0 or 1).
+1. 1. **[League of Legends Solo Queue Ranked Games](https://www.kaggle.com/datasets/bobbyscience/league-of-legends-soloq-ranked-games)**  
+    - Contains statistics from approximately 25000 ranked Solo Queue games at Platinum ELO.  
+    - Each game includes multiple time frames (from 10 min, 12 min, 14 min, etc.), totaling 240,000+ game frames.  
+    - Features 55 attributes for the BLUE team, including kills, deaths, gold, experience, level, and more.  
+    - The `hasWon` column is the target value for our classification  
 
-2. https://www.kaggle.com/datasets/bobbyscience/league-of-legends-diamond-ranked-games-10-min/data
+2. **[League of Legends Diamond Ranked Games (10-min)](https://www.kaggle.com/datasets/bobbyscience/league-of-legends-diamond-ranked-games-10-min/data)**  
+    - Contains statistics from  approximately 10000 ranked Solo Queue games at Diamond I to Master ELO.  
+    - Includes 19 features per team (38 in total), collected at the 10-minute mark.  
+    - The `blueWins` column is the target variable (1 = Blue team wins, 0 = Loss).  
 
-This dataset contains the first 10min. stats of approx. 10k ranked games (SOLO QUEUE) from a high ELO (DIAMOND I to MASTER). Players have roughly the same level. Each game is unique. The gameId can help you to fetch more attributes from the Riot API. There are 19 features per team (38 in total) collected after 10min in-game. This includes kills, deaths, gold, experience, level… It's up to you to do some feature engineering to get more insights. The column blueWins is the target value (the value we are trying to predict). A value of 1 means the blue team has won. 0 otherwise.
-
-3. https://www.kaggle.com/datasets/jakubkrasuski/league-of-legends-match-dataset-2025
-
-This dataset haven 94 attributes capturing comprehensive match and player data. 
-Key columns: game_id, game_start_utc, game_duration, queue_id, participant_id, kills, deaths, assists, final_damageDealt, final_goldEarned, and more.
+3. **[League of Legends Match Dataset 2025](https://www.kaggle.com/datasets/jakubkrasuski/league-of-legends-match-dataset-2025)**  
+    - Contains 94 attributes capturing comprehensive match and player data.  
+    - Key columns include `game_id`, `game_start_utc`, `game_duration`, `queue_id`, `participant_id`, `kills`, `deaths`, `assists`, `final_damageDealt`, `final_goldEarned`, etc.
 
 ## Training the First Model
 The first version of the model was trained using:
