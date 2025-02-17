@@ -62,7 +62,7 @@ Potential model improvements:
 - Add KDR weighting.
   - Due to low respawn times in the early game, champion kills should be more or less conditionally independent to winning outside given their effect on gold and exp. However, due to being affected by player/team skill, they are still relevant conditions by proxy. This is shown in the strong correlations of the kills and deaths in the first 10 minutes to winning.
 - Add Drake weighting
-  - Mostly due to above reason above, but killing drakes also gives a slight xp boost.
+  - Mostly due to above reason above, but killing drakes also gives slight boosts.
 
 Markov Chain:
 - Because the dataset includes information at 2 minute intervals, we could increase the functionality of the model by converting it to a time based markov chain which attempts to predict how many objective buildings (turrets, inhibitors, nexus) get destroyed in the next 2 minutes based on the change of stats between frames. However, due to the amount of feedback loops, it likely won't be more accurate.
@@ -73,8 +73,9 @@ Markov Chain:
  - Generally high complexity
 ![Unreadable chart](potentialmarkov.png)
 A more realistic objective could be predicting the chance of a win / loss in the next 6 minutes
+
 Hiding information
-- Notably, one of the advantages of Bayesian networks, the ability to generate a CPT, is unused in our current agent as it taken from a spectators perspective.
+- Notably, one of the advantages of Bayesian networks, the ability to generate a CPT, is unused in our current agent as 
 - We could create a slightly different agent which functions based on the information given to a certain team rather than the information available to spectators (ex. certain info such as the enemy team's gold is not present).
 
 Bayes Limitations
