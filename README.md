@@ -48,10 +48,11 @@ The first version of the model was trained using the following:
 
 ## Conclusion
 
-The first iteration of our Bayesian network model has provided promising insights into early-game win prediction. Here are our observations:
-- Because the dataset includes information at 2 minute intervals, we could increase the functionality and potentially the accuracy of the model by converting it to a time based markov chain which attempts to predict the stats in the next 2 minutes based on the stats of the current minute.
-  Another New metric: progress along lanes
-Bayesian networks notably ill-suited for this problem since loops are intrinsically present with gold (technically items purchased with gold) and level. Since they have direct impact on win percentage 
+The first iteration of our Bayesian network model has provided promising insights into early-game win prediction. However, our observations show areas of improvement.
+
+# Observations
+- The dataset records game statistics at 2-minute intervals. This could be an opportunity to improve the model's functionality and accuracy by implementing a time-based Markov Chain model to predict statistics for the next interval of 2 minutes (e.g. 10 minutes, 12 minutes, etc.)
+- Bayesian networks may not be the best choice for this problem due to the presence of loops in important variables (e.g., gold and exp/level). Gold can be used to buy items, which have a significant impact on exp gain, KDA, objectives, and many other variables, including itself. The same issue is seen in EXP and level progression. As both gold and level progression have significant impacts on the win probability, making strict conditional independence assumptions become problematic.
 
 
 While gold is *theoretically* conditionally independent from win chance given item counts (the only way gold actually effects the outcome of the match).
