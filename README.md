@@ -33,8 +33,9 @@ Key columns: game_id, game_start_utc, game_duration, queue_id, participant_id, k
 The first version of the model was trained using:
 - A dataset filtered at the 10-minute mark to capture early-game statistics.
     - Split 75-25 into training and test.
-- Conditional probabilities were estimated using training set
-The model was determined using:
+- Conditional probabilities of a relevant Bayesian network were estimated using training set.
+
+The Bayesian network was determined using:
 - Bayesian network structure learning via Hill Climb Search.
 - Data count and distribution analysis filtering features with too little data.
 - Correlation analysis with heatmaps and pairplots showing feature dependence.
@@ -72,12 +73,14 @@ Potential model improvements:
 
 Markov Chain:
 - Because the dataset includes information at 2 minute intervals, we could increase the functionality of the model by converting it to a time based markov chain which attempts to predict how many objective buildings (turrets, inhibitors, nexus) get destroyed in the next 2 minutes based on the change of stats between frames. However, due to the amount of feedback loops, it likely won't be more accurate.
-- Challenges:
- - Time based weighting (stats like respawn time change and using absolute values for gold work less well)
- - Coarse information (only a snapshot every 2 minutes)
- - Independence between lanes 
- - Intrinsic loops with gold and experience
- - Generally high complexity
+
+   Challenges:
+- Time based weighting (stats like respawn time change and using absolute values for gold work less well)
+- Coarse information (only a snapshot every 2 minutes)
+- Independence between lanes 
+- Intrinsic loops with gold and experience
+- Generally high complexity
+
 ![Unreadable chart](potentialmarkov.png)
 
 A more realistic objective could be predicting the chance of a win / loss in the next 6 minutes
