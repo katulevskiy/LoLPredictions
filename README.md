@@ -12,6 +12,35 @@ The AI agent used in this model is a goal-based agent, meaning it operates by as
 ## AI Agent Setup and Probabilistic Modeling
 The Bayesian network is structured to capture key dependencies between game metrics, such as gold difference, experience difference, kills, deaths, and objective control. The structure is learned using a Hill Climbing Search algorithm with a Bayesian Information Criterion (BIC) Score to find the best-fitting network structure.
 
+## Hill Climbing Search for Bayesian Network Structure Learning
+
+To determine the optimal structure of the Bayesian network, we employed the Hill Climbing Search algorithm. This algorithm iteratively explores possible modifications to the network structure, evaluating each modification using the Bayesian Information Criterion (BIC) score to determine the most likely structure given the data. The process involves:
+
+- Initialization: Start with an initial network structure (e.g., an empty graph or a naïve Bayes structure).
+
+- Iterative Improvement:
+
+  - Add, remove, or reverse an edge between nodes.
+
+  - Calculate the BIC score for the new structure.
+
+  - Accept the modification if it improves the score.
+
+- Termination: The algorithm stops when no further modifications improve the score.
+
+This approach allows us to efficiently learn a probabilistic graphical model that best represents the relationships between game features while avoiding overfitting.
+
+## Conditional Probability Table (CPT) Estimation
+
+The Conditional Probability Tables (CPTs) are estimated based on frequency counts from the dataset. Given a parent node  and a child node , the conditional probability of  given  is calculated as:
+
+- $P(C|P) = \frac{count(C, P)}{count(P)}$
+where:
+
+count(C, P) is the number of occurrences where both  and  appear together in the dataset.
+
+count(P) is the total occurrences of  in the dataset.
+ 
 ## Datasets
 
 Please provide links to your proposed datasets below. You can submit up to 3, but only need 1. The top one will ranked 1st and the bottom ranked last:
