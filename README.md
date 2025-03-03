@@ -41,6 +41,8 @@ count(C, P) is the number of occurrences where both  and  appear together in the
 
 count(P) is the total occurrences of  in the dataset.
  
+More detailed derivation is in [Link to equation derivation](Papers/lolaiagentpredict.pdf)
+
 ## Datasets
 
 Please provide links to your proposed datasets below. You can submit up to 3, but only need 1. The top one will ranked 1st and the bottom ranked last:
