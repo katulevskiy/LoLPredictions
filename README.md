@@ -81,7 +81,7 @@ Markov Chain:
 - Intrinsic loops with gold and experience
 - Generally high complexity
 
-![Unreadable chart](potentialmarkov.png)
+![Unreadable chart](/Images/potentialmarkov.png)
 
 A more realistic objective could be predicting the chance of a win / loss in the next 6 minutes
 
@@ -89,7 +89,20 @@ Hiding information
 - Notably, one of the advantages of Bayesian networks, the ability to generate a CPT, is unused in our current agent as the only piece of information we have available in training but not in testing is the end result of a match.
 - We could create a slightly different agent which functions based on the information given to a certain team rather than the information available to spectators (ex. certain info such as the enemy team's gold is not present).
 
+## CPTs
+![Unreadable chart](/Images/CPT1-1.png)
+![Unreadable chart](/Images/CPT1-2.png)
+![Unreadable chart](/Images/CPT1-3.png)
+![Unreadable chart](/Images/CPT1-4.png)
 
+## Figures
+![Unreadable chart](/Images/Figure1-1.png)
+![Unreadable chart](/Images/Figure1-2.png)
+![Unreadable chart](/Images/Figure1-3.png)
+![Unreadable chart](/Images/Figure1-4.png)
+![Unreadable chart](/Images/Figure1-5.png)
+![Unreadable chart](/Images/Figure1-6.png)
+![Unreadable chart](/Images/Figure1-7.png)
 
 ## Group Members
 - Jason Cheung, jac130@ucsd.edu
