@@ -12,24 +12,6 @@ The AI agent used in this model is a goal-based agent, meaning it operates by as
 ## AI Agent Setup and Probabilistic Modeling
 The Bayesian network is structured to capture key dependencies between game metrics, such as gold difference, experience difference, kills, deaths, and objective control. The structure is learned using a Hill Climbing Search algorithm with a Bayesian Information Criterion (BIC) Score to find the best-fitting network structure.
 
-## Hill Climbing Search for Bayesian Network Structure Learning
-
-To determine the optimal structure of the Bayesian network, we employed the Hill Climbing Search algorithm. This algorithm iteratively explores possible modifications to the network structure, evaluating each modification using the Bayesian Information Criterion (BIC) score to determine the most likely structure given the data. The process involves:
-
-- Initialization: Start with an initial network structure (e.g., an empty graph or a naïve Bayes structure).
-
-- Iterative Improvement:
-
-  - Add, remove, or reverse an edge between nodes.
-
-  - Calculate the BIC score for the new structure.
-
-  - Accept the modification if it improves the score.
-
-- Termination: The algorithm stops when no further modifications improve the score.
-
-This approach allows us to efficiently learn a probabilistic graphical model that best represents the relationships between game features while avoiding overfitting.
-
 ## Conditional Probability Table (CPT) Estimation
 
 The Conditional Probability Tables (CPTs) are estimated based on frequency counts from the dataset. Given a parent node  and a child node , the conditional probability of  given  is calculated as:
@@ -45,20 +27,11 @@ More detailed derivation is in [Link to equation derivation](Papers/lolaiagentpr
 
 ## Datasets
 
-These are the potential datasets for training and evaluating our AI model. The top-ranked (1st) dataset is preferred, while the others are alternative options:
+We are the mainly using this dataset for training and evaluating our AI model.
 
-1. https://www.kaggle.com/datasets/bobbyscience/league-of-legends-soloq-ranked-games
+  https://www.kaggle.com/datasets/bobbyscience/league-of-legends-soloq-ranked-games
 
   This dataset contains the stats of approximately 25000 ranked games (SOLO QUEUE) from a Platinium ELO. Each game is unique. The gameId can help you to fetch more attributes from the Riot API. Each game has features from different time frames from 10min to the end of the game. For example, game1 10min, game1 12min, game1 14min etc. In total there are +240000 game frames. There are 55 features collected for the BLUE team. This includes kills, deaths, gold, experience, level. It's up to you to do some feature engineering to get more insights. The column hasWon is the target value if you're doing classification to predict the game outcome. Otherwise you can use the gameDuration attribute if you wanna predict the game duration. Attributes starting with is* are boolean categorial values (0 or 1).
-
-2. https://www.kaggle.com/datasets/bobbyscience/league-of-legends-diamond-ranked-games-10-min/data
-
-  This dataset contains the first 10min. stats of approx. 10k ranked games (SOLO QUEUE) from a high ELO (DIAMOND I to MASTER). Players have roughly the same level. Each game is unique. The gameId can help you to fetch more attributes from the Riot API. There are 19 features per team (38 in total) collected after 10min in-game. This includes kills, deaths, gold, experience, level… It's up to you to do some feature engineering to get more insights. The column blueWins is the target value (the value we are trying to predict). A value of 1 means the blue team has won. 0 otherwise.
-
-3. https://www.kaggle.com/datasets/jakubkrasuski/league-of-legends-match-dataset-2025
-
-  This dataset haven 94 attributes capturing comprehensive match and player data. 
-Key columns: game_id, game_start_utc, game_duration, queue_id, participant_id, kills, deaths, assists, final_damageDealt, final_goldEarned, and more.
 
 ## Training the First Model
 The first version of the model was trained using:
@@ -121,19 +94,8 @@ Hiding information
 - We could create a slightly different agent which functions based on the information given to a certain team rather than the information available to spectators (ex. certain info such as the enemy team's gold is not present).
 
 ## CPTs
-![Unreadable chart](/Images/CPT1-1.png)
-![Unreadable chart](/Images/CPT1-2.png)
-![Unreadable chart](/Images/CPT1-3.png)
-![Unreadable chart](/Images/CPT1-4.png)
 
 ## Figures
-![Unreadable chart](/Images/Figure1-1.png)
-![Unreadable chart](/Images/Figure1-2.png)
-![Unreadable chart](/Images/Figure1-3.png)
-![Unreadable chart](/Images/Figure1-4.png)
-![Unreadable chart](/Images/Figure1-5.png)
-![Unreadable chart](/Images/Figure1-6.png)
-![Unreadable chart](/Images/Figure1-7.png)
 
 ## Group Members
 - Jason Cheung, jac130@ucsd.edu
