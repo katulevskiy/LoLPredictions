@@ -68,6 +68,7 @@ League of Legends is a **time-evolving** game. Early deficits can be overcome by
 The **Viterbi algorithm** finds the most probable sequence of hidden states and thus infers the final advantage state. From this, we predict win/loss.
 
 ### 3.3 Parameter Estimation
+![hmm_figure](./Images/hmm.png)
 
 We estimate **Transition** and **Emission** probabilities from training data:
 
