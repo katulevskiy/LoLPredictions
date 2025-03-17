@@ -12,7 +12,7 @@ The AI agent used in this model is a goal-based agent, meaning it operates by as
 ## AI Agent Setup and Probabilistic Modeling
 The Hidden Markov Model (HMM) is designed to capture how the game evolves over time, using key metrics like gold difference, experience difference, kills, deaths, and objective control. These metrics are treated as observations that help uncover the hidden states of the match—such as whether a team is dominating, holding even, or falling behind. 
 
-## Conditional Probability Table (CPT) Estimation
+## Transition and Emission Estimation
 
 The Conditional Probability Tables (CPTs) are estimated based on frequency counts from the dataset. Given a parent node  and a child node , the conditional probability of  given  is calculated as:
 
@@ -27,7 +27,7 @@ More detailed derivation is in [Link to equation derivation](Papers/lolaiagentpr
 
 ## Datasets
 
-We are the mainly using this dataset for training and evaluating our AI model.
+  We are the mainly using this dataset for training and evaluating our AI model.
 
   https://www.kaggle.com/datasets/bobbyscience/league-of-legends-soloq-ranked-games
 
