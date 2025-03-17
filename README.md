@@ -1,5 +1,4 @@
 #### [Link to main file](main.ipynb)
-#### [Link to equation derivation](Papers/lolaiagentpredict.pdf)
 
 # Hidden Markov Model for League of Legends Match Outcome Prediction
 
