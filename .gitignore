@@ -1,2 +1,6 @@
 .idea
 .DS_Store
+advanced_nn_checkpoint.pth
+enhanced_nn_checkpoint.pth
+random_forest.pkl
+xgboost_gpu.model
