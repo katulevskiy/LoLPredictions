@@ -30,6 +30,8 @@ Our agent is goal-based, focusing on maximizing predictive accuracy for the outc
 
 ### 3.1 Dataset Exploration & Feature Engineering
 
+https://www.kaggle.com/datasets/bobbyscience/league-of-legends-soloq-ranked-games
+
 We used a Kaggle dataset with **\~25,000 matches** at Platinum rank. Each match is subdivided into 2-minute intervals (frames) after the 10-minute mark. We have **55+ features**, including:
 
 - **gold** and **experience** totals,
@@ -394,6 +396,16 @@ Thus, depending on whether the goal is maximum purely static accuracy or a time-
 - Kevin Zheng, kezheng@ucsd.edu
 - Daniil Katulevskiy, dkatulevskiy@ucsd.edu
 - Petra Hu, e2hu@ucsd.edu
+
+## Figures
+
+All the data processing steps from Milestone 2 are still relevant for our new HMM model. Figures are presented below, but in-depth explanation of previous data exploration can be found below in an expandable Milestone 2 readme.
+
+![Unreadable chart](/Images/Figure1-1.png)
+![Unreadable chart](/Images/Figure1-2.png)
+![Unreadable chart](/Images/Figure1-3.png)
+![Unreadable chart](/Images/Figure1-4.png)
+![Unreadable chart](/Images/Figure1-5.png)
 
 <details>
   <summary>Click to expand for older version</summary>
