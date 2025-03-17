@@ -156,8 +156,7 @@ transition_probs = (transition_matrix + 1e-6) / (
 ```
 
 - **`state_map`**: A dictionary that maps string states (“Even,” etc.) to integer indices (e.g., 0,1,2).
-- **Laplace smoothing** is done via the `1e-6` offset.
-
+- **Laplace smoothing** is done via the `1e-6` offset to prevent taking the logarithm of 0.
 ---
 
 ### 3. Emission Matrix
@@ -338,6 +337,12 @@ Our previous BN at minute 10 achieved about **70%** accuracy. The HMM with full 
 
 5. **Extended States or Semi-Markov**
   - Some events (like major team fights) can drastically swing the game in under a minute, but we only have data every 2 minutes. A more nuanced approach might capture sub-frame transitions.
+
+6. **Overcomplication**
+  - The model becomes more accurate with fewer inputs, likely due to gold/exp being such central factor. Considering only gold, exp and baron kills results in around an 85%, 72% and 83% prediction for all frames, 10-20 and 20-30 respectively.
+
+7. **Variable Transition Matrices**
+  - Transitions between states is far more likely in the early game. As a result, using an averaged transition matrix results in switching too slowly early game.
 
 Despite these limitations, the HMM approach demonstrates that modeling the temporal sequence of game states outperforms a purely static snapshot. In future milestones, we will explore refining hidden states, adding further relevant features, and potentially testing advanced HMM variants.
 
