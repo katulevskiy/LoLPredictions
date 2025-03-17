@@ -68,19 +68,18 @@ The **Viterbi algorithm** finds the most probable sequence of hidden states and 
 We estimate **Transition** and **Emission** probabilities from training data:
 
 - **Transition Probability**  
-  \[
-  P(\text{State}_t \mid \text{State}_{t-1}) \;=\;
+  
+  $$P(\text{State}_t \mid \text{State}_{t-1}) \;=\;
   \frac{\text{Count}(\text{State}_{t-1}, \text{State}_t)}
-  {\sum_{s'} \text{Count}(\text{State}_{t-1}, s')}
-  \]
+  {\sum_{s'} \text{Count}(\text{State}_{t-1}, s')}$$
 
   For each consecutive pair of frames in each training game, we tally transitions from the previous state to the current state.
 
 - **Emission Probability**  
-  \[
+  $$
   P(\text{Observations}_t \mid \text{State}_t)
   \;\approx\; \prod_{f \in \text{features}} P(f \mid \text{State}_t)
-  \]
+  $$
   Each feature is assumed conditionally independent given the hidden state. We compute the fraction of frames in a given state that have `goldDiff=1`, `expDiff=1`, etc.
 
 We apply Laplace smoothing to handle zero probabilities.
