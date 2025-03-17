@@ -1,0 +1,1 @@
+Grok (xAI). (2025). Hidden Markov Model Implementation for Predicting League of Legends Match Outcomes. Developed in collaboration with [Jason Cheung, Jeremy Lim, Kevin Zheng, Daniil Katulevskiy, Petra Hu] for an AI project on game outcome prediction using the lol_ranked_games.csv dataset. Code generated and refined through interactive discussions on March 16, 2025.
